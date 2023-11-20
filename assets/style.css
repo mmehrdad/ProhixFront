@@ -1,0 +1,92 @@
+html {
+    font-size: 33px;
+    letter-spacing: normal;
+    font-family: 'BNazaninFont', sans-serif;
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'BNazaninFont' !important;
+    width: 100%;
+    height: 100%;
+    margin: 0px !important;
+    padding: 0px !important;
+    overflow-x: hidden;
+
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    font-family: 'BNazaninFont', sans-serif !important;
+}
+
+
+
+.v-application {
+    font-family: 'BNazaninFont' !important;
+    background-color: blueviolet;
+    /* margin-top: 7% !important; */
+}
+
+.container {
+    padding: 0 !important;
+    width: 100%;
+    padding: 25px;
+
+}
+
+@media (min-width: 960px) {
+    .container {
+        max-width: 100% !important;
+        padding: 25px;
+    }
+        div {
+            font-family: 'BNazaninFont', sans-serif !important;
+            font-size: 14px !important;
+        }
+}
+
+@media (min-width: 1264px) {
+    .container {
+        /* max-width: 1464px!important; */
+        max-width: 100% !important;
+        padding: 25px !important;
+    }
+        div {
+            font-family: 'BNazaninFont', sans-serif !important;
+            font-size: 14px !important;
+        }
+}
+@media only screen and (max-width: 600px) {
+    div {
+            font-family: 'BNazaninFont', sans-serif !important;
+            font-size: 12px !important;
+        }
+}
+
+.v-application {
+    background-color: aliceblue !important;
+}
+.v-label {
+    font-size: 14px !important;
+}
+.v-text-field {
+    padding-top: 0px!important;
+    margin-top: 0px!important;
+}
+.v-btn.v-size--default {
+    font-size: 12px!important;
+}
+.v-navigation-drawer--temporary {
+    z-index: 100!important;
+}
+
