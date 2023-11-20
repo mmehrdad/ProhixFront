@@ -88,24 +88,29 @@
           </v-card>
         </v-col>
         <!-- ------------------------------------------------ -->
-        <v-carousel cycle hide-delimiters>
-          <v-carousel-item v-for="slideIndex in slideIndexes" :key="slideIndex">
-            <v-row>
-              <v-col
-                v-for="slide in getSlidesForIndex(slideIndex)"
-                :key="slide.id"
-                cols="4"
-              >
-                <!-- Your slide content goes here -->
-                <v-card>
-                  <v-img :src="slide.image" height="300"></v-img>
-                  <v-card-title>{{ slide.title }}</v-card-title>
-                  <v-card-text>{{ slide.description }}</v-card-text>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-carousel-item>
-        </v-carousel>
+        <v-col cols="12" sm="12" md="12" lg="12" class="">
+          <v-carousel cycle hide-delimiters style="height:300px">
+            <v-carousel-item
+              v-for="slideIndex in slideIndexes"
+              :key="slideIndex"
+            >
+              <v-row>
+                <v-col
+                  v-for="slide in getSlidesForIndex(slideIndex)"
+                  :key="slide.id"
+                  cols="2"
+                >
+                  <!-- Your slide content goes here -->
+                  <v-card>
+                    <v-img :src="slide.image" height="200"></v-img>
+                    <v-card-title>{{ slide.title }}</v-card-title>
+                    <v-card-text>{{ slide.description }}</v-card-text>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
         <!-- <div class="display-area">
                     <div class="cards-wrapper">
 
@@ -235,8 +240,80 @@ export default {
     // ],
     slides: [
       // Your slide objects here
+      {
+        id: 1,
+        image: 'https://picsum.photos/200?random=1',
+        title: 'Slide 1',
+        description: 'Description for Slide 1',
+      },
+      {
+        id: 2,
+        image: 'https://picsum.photos/200?random=2',
+        title: 'Slide 2',
+        description: 'Description for Slide 2',
+      },
+      {
+        id: 3,
+        image: 'https://picsum.photos/200?random=3',
+        title: 'Slide 1',
+        description: 'Description for Slide 1',
+      },
+      {
+        id: 4,
+        image: 'https://picsum.photos/200?random=113',
+        title: 'Slide 2',
+        description: 'Description for Slide 2',
+      },
+      {
+        id: 5,
+        image: 'https://picsum.photos/200?random=123',
+        title: 'Slide 1',
+        description: 'Description for Slide 1',
+      },
+      {
+        id: 6,
+        image: 'https://picsum.photos/200?random=131',
+        title: 'Slide 2',
+        description: 'Description for Slide 2',
+      },
+      {
+        id: 7,
+        image: 'https://picsum.photos/200?random=133',
+        title: 'Slide 1',
+        description: 'Description for Slide 1',
+      },
+      {
+        id: 8,
+        image: 'https://picsum.photos/200?random=143',
+        title: 'Slide 2',
+        description: 'Description for Slide 2',
+      },
+      {
+        id: 9,
+        image: 'https://picsum.photos/200?random=163',
+        title: 'Slide 1',
+        description: 'Description for Slide 1',
+      },
+      {
+        id: 10,
+        image: 'https://picsum.photos/200?random=153',
+        title: 'Slide 2',
+        description: 'Description for Slide 2',
+      },
+      {
+        id: 11,
+        image: 'https://picsum.photos/200?random=183',
+        title: 'Slide 1',
+        description: 'Description for Slide 1',
+      },
+      {
+        id: 12,
+        image: 'https://picsum.photos/200?random=193',
+        title: 'Slide 2',
+        description: 'Description for Slide 2',
+      },
     ],
-    slidesPerPage: 5,
+    slidesPerPage: 6,
     current: 0,
     width: 300,
     timer: 0,
@@ -334,71 +411,4 @@ export default {
 .dot.active {
   background: rgba(0, 0, 0, 0.5);
 }
-
-/* #slider{
-width:100%;
-}
-
-.slider {
-  margin: 0 auto;
-  padding: 0;
-  margin-left: 15px;
-  margin-right: 15px;
-  max-width: 100%;
-  height: 150px;
-  position: relative;
-  overflow: hidden;
-  ul.slides {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: table;
-    position: absolute;
-    top: 0;
-    transition: left 800ms;
-    li {
-      list-style-type: none;
-      display: table-cell;
-      img{
-        width: 300;
-      }
-    }
-  }
-  ul.bullets {
-    width: inherit;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 0;
-    margin: 0 0 10px 0;
-    text-align: center;
-    z-index: 1;    
-    li {
-      list-style-type: none;
-      display: inline;
-      color: #fff;
-      cursor: pointer;
-      padding: 0 5px;      
-      font-size: 20px;      
-      font-family: sans-serif;          
-    }
-  }  
-  .prev,
-  .next{
-    text-decoration: none;
-    color: #fff;
-    position: absolute;  
-    z-index: 1;
-    font-size: 18px;
-    top: 43%;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-  }
-  .prev{
-    left: 20px;
-  }
-  .next{
-    right: 20px;
-  }
-}   */
 </style>
