@@ -307,9 +307,9 @@ export default {
         },
         async save() {
             this.student ={ ...this.studentTemp};
-            this.student.citizenshipId = this.citizenship.id;
-            this.student.secondCitizenshipId = this.secondCitizenship.id;
-            this.student.dateOfBirth = (this.student.dateOfBirth.split('T')[0]);
+            this.student.citizenshipId =this.citizenship? this.citizenship.id:null;
+            this.student.secondCitizenshipId =this.secondCitizenship? this.secondCitizenship.id:null;
+            this.student.dateOfBirth = (this.dateOfBirth?this.student.dateOfBirth.split('T')[0]:null);
             this.postApiOption.path = 'Student/updateStudent'
             this.postApiOption.option = await this.student
             await this.runPutApi(this.postApiOption).then((data) => {

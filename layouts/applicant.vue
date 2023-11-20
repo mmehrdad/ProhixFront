@@ -89,7 +89,7 @@
         </v-col>
         <!-- ------------------------------------------------ -->
         <v-col cols="12" sm="12" md="12" lg="12" class="">
-          <v-carousel cycle hide-delimiters style="height:300px">
+          <v-carousel  hide-delimiters style="height:300px">
             <v-carousel-item
               v-for="slideIndex in slideIndexes"
               :key="slideIndex"
@@ -150,8 +150,8 @@
               </v-list-item>
               <v-list-item>
                 <v-divider></v-divider>
-              </v-list-item>
-              <v-list-item>
+              </v-list-item >
+              <v-list-item to="./dashboard">
                 <v-list-item-icon>
                   <v-icon>mdi-account</v-icon>
                 </v-list-item-icon>
