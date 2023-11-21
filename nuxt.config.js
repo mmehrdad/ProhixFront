@@ -25,6 +25,7 @@ export default {
     '~/plugins/filters.js',
     '~/plugins/notifier.js',
     '~/plugins/validator.js',
+    { src: '~/plugins/device', ssr: false },
     ],
 
 
@@ -46,6 +47,7 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     "vue-toastification/nuxt",
+   // 'vue-device-detector',
    
   ],
   env: {

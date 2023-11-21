@@ -89,7 +89,7 @@
         </v-col>
         <!-- ------------------------------------------------ -->
         <v-col cols="12" sm="12" md="12" lg="12" class="">
-          <v-carousel  hide-delimiters style="height:300px">
+          <v-carousel hide-delimiters style="height: 300px">
             <v-carousel-item
               v-for="slideIndex in slideIndexes"
               :key="slideIndex"
@@ -98,7 +98,7 @@
                 <v-col
                   v-for="slide in getSlidesForIndex(slideIndex)"
                   :key="slide.id"
-                  cols="2"
+                  cols="12" sm="12" md="2" lg="2"
                 >
                   <!-- Your slide content goes here -->
                   <v-card>
@@ -137,7 +137,7 @@
                 </div> -->
 
         <!-- ------------------------------------------------ -->
-        <v-col cols="12" sm="12" md="2" lg="2" class="mr-5">
+        <v-col cols="12" sm="12" md="12" lg="12" class="mr-5">
           <v-navigation-drawer v-model="drawer" absolute temporary>
             <v-list
               color="white"
@@ -150,7 +150,7 @@
               </v-list-item>
               <v-list-item>
                 <v-divider></v-divider>
-              </v-list-item >
+              </v-list-item>
               <v-list-item to="./dashboard">
                 <v-list-item-icon>
                   <v-icon>mdi-account</v-icon>
@@ -325,6 +325,13 @@ export default {
     slideIndexes() {
       return Math.ceil(this.slides.length / this.slidesPerPage)
     },
+  },
+  mounted() {
+    
+      if (this.$device.windows) this.slidesPerPage = 6
+      if (this.$device.mobile) this.slidesPerPage = 1
+      console.log(this.$device)
+    
   },
   methods: {
     logout() {
