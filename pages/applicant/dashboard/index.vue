@@ -231,7 +231,7 @@ export default {
             citizenshipId: 0,
             secondCitizenshipId: 0,
             motherTongueId: 0,
-            dateOfBirth: '',
+            dateOfBirth: null,
             postalCode: '',
             address: '',
         },
@@ -243,7 +243,7 @@ export default {
             citizenshipId: 0,
             secondCitizenshipId: 0,
             motherTongueId: 0,
-            dateOfBirth: '',
+            dateOfBirth: null,
             postalCode: '',
             address: '',
         },
@@ -309,9 +309,9 @@ export default {
             this.student ={ ...this.studentTemp};
             this.student.citizenshipId =this.citizenship? this.citizenship.id:null;
             this.student.secondCitizenshipId =this.secondCitizenship? this.secondCitizenship.id:null;
-            this.student.dateOfBirth = (this.dateOfBirth?this.student.dateOfBirth.split('T')[0]:null);
+            this.student.dateOfBirth = (this.student.dateOfBirth?this.student.dateOfBirth.split('T')[0]:null);
             this.postApiOption.path = 'Student/updateStudent'
-            this.postApiOption.option = await this.student
+            this.postApiOption.option =  this.student
             await this.runPutApi(this.postApiOption).then((data) => {
                 this.loading = false;
                 this.dialog = false

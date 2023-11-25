@@ -8,7 +8,7 @@
               <v-app-bar-nav-icon
                 @click="drawer = !drawer"
               ></v-app-bar-nav-icon>
-              <v-toolbar-title>Title</v-toolbar-title>
+              <v-toolbar-title>Applicant dashboard</v-toolbar-title>
               <v-spacer></v-spacer>
               <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
@@ -40,9 +40,9 @@
                       </v-list-item-avatar>
 
                       <v-list-item-content>
-                        <v-list-item-title>John Leider</v-list-item-title>
+                        <v-list-item-title>{{ nameFamily }}</v-list-item-title>
                         <v-list-item-subtitle
-                          >Founder of Vuetify</v-list-item-subtitle
+                          >{{userName}}</v-list-item-subtitle
                         >
                       </v-list-item-content>
 
@@ -79,8 +79,10 @@
                   <v-card-actions>
                     <v-spacer></v-spacer>
 
-                    <v-btn text @click="menu = false"> Cancel </v-btn>
-                    <v-btn color="primary" text @click="logout"> Save </v-btn>
+                    <!-- <v-btn text @click="menu = false"> Cancel </v-btn> -->
+                    <v-btn color="primary" text @click="logout()">
+                      Logout
+                    </v-btn>
                   </v-card-actions>
                 </v-card>
               </v-menu>
@@ -98,7 +100,10 @@
                 <v-col
                   v-for="slide in getSlidesForIndex(slideIndex)"
                   :key="slide.id"
-                  cols="12" sm="12" md="2" lg="2"
+                  cols="12"
+                  sm="12"
+                  md="2"
+                  lg="2"
                 >
                   <!-- Your slide content goes here -->
                   <v-card>
@@ -111,30 +116,6 @@
             </v-carousel-item>
           </v-carousel>
         </v-col>
-        <!-- <div class="display-area">
-                    <div class="cards-wrapper">
-
-                        <div class="card"><img src="https://picsum.photos/200?random=1" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=2" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=3" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=4" alt=""></div>
-
-                        <div class="card"><img src="https://picsum.photos/200?random=5" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=6" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=7" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=8" alt=""></div>
-
-                        <div class="card"><img src="https://picsum.photos/200?random=9" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=10" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=11" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=12" alt=""></div>
-
-                        <div class="card"><img src="https://picsum.photos/200?random=13" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=14" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=15" alt=""></div>
-                        <div class="card"><img src="https://picsum.photos/200?random=16" alt=""></div>
-                    </div>
-                </div> -->
 
         <!-- ------------------------------------------------ -->
         <v-col cols="12" sm="12" md="12" lg="12" class="mr-5">
@@ -224,7 +205,8 @@ export default {
     menu: false,
     message: false,
     hints: true,
-
+    nameFamily: '',
+    userName: '',
     // -----------------------------
     // slides: [
     //   'https://picsum.photos/200?random=9',
@@ -327,15 +309,15 @@ export default {
     },
   },
   mounted() {
-    
-      if (this.$device.windows) this.slidesPerPage = 6
-      if (this.$device.mobile) this.slidesPerPage = 1
-      console.log(this.$device)
-    
+    if (this.$device.windows) this.slidesPerPage = 6
+    if (this.$device.mobile) this.slidesPerPage = 1
+    console.log(this.$device)
   },
   methods: {
     logout() {
-      console.log('')
+      localStorage.removeItem('userToken')
+      // localStorage.removeItem('hs799hr2336q')
+      this.$router.push('/Applicant/Account/Login')
     },
     ...mapActions({
       runPostApi: 'runapi/postApi',
@@ -352,6 +334,11 @@ export default {
   },
   created() {
     // this.play();
+    this.$store.dispatch('getUserInfo').then((data) => {
+      this.nameFamily = data.Name
+      this.userName=data.UserName;
+      console.log(data)
+    })
   },
   head: {
     script: [
